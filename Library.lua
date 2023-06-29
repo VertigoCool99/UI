@@ -1,4 +1,4 @@
-print("0.4")
+print("0.5")
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -1173,7 +1173,7 @@ function library.object_dropdown(holder, content, flag, callback, default, max, 
         Thickness = 1,
         Color = Color3.fromRGB(13,13,13),
         Size = UDim2.new(0, 100, 0, 15),
-        Position = UDim2.new(0, title.TextBounds.X+5, 0,0),
+        Position = UDim2.new(0, utility.textlength(title.Text,title.Font,ttile.Size).X+5, 0,0),
         ZIndex = 7,
         Parent = holder
     })
