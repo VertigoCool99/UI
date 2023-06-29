@@ -2262,7 +2262,7 @@ function library:init_window(cfg)
                             Text = name,
                             Font = Drawing.Fonts.Plex,
                             Size = 13,
-                            Position = UDim2.new(0, 155, 0, 0),--Changed here
+                            Position = UDim2.new(0, 105, 0, 0),
                             Theme = "Text",
                             ZIndex = 7,
                             Outline = false,
@@ -4887,7 +4887,7 @@ function library:init_window(cfg)
                 end
                 --
                 local title = utility.create("Text", {
-                    Text = name,
+                    Text = name.."Chnaged the right",
                     Font = Drawing.Fonts.Plex,
                     Size = 13,
                     Position = UDim2.new(0, 105, 0, 0),
