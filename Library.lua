@@ -1,5 +1,5 @@
 print("1.0C")
-ocal RunService = game:GetService("RunService")
+local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
     default_accent = Color3.fromRGB(255,255,255);
@@ -1166,7 +1166,7 @@ function library.object_textbox(box, text, callback, finishedcallback)
         end
     end)
 end
-function library.object_dropdown(holder, content, flag, callback, default, max, scrollable, scrollingmax, section,title)#
+function library.object_dropdown(holder, content, flag, callback, default, max, scrollable, scrollingmax, section,title)
     print(title)
     local dropdown = utility.create("Square", {
         Filled = true,
