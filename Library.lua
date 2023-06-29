@@ -42,14 +42,13 @@ local services = setmetatable({}, {
 local utility = {}
 local totalunnamedflags = 0
 
-function utility.dragify(main, dragoutline, object, allow_tween)
+function utility.dragify(main, object)
     local start, objectposition, dragging, currentpos
 
     main.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 then
             dragging = true
             start = input.Position
-            dragoutline.Visible = true
             objectposition = object.Position
         end
     end)
@@ -57,36 +56,23 @@ function utility.dragify(main, dragoutline, object, allow_tween)
     utility.connect(services.InputService.InputChanged, function(input)
         if input.UserInputType == Enum.UserInputType.MouseMovement and dragging then
             currentpos = UDim2.new(objectposition.X.Scale, objectposition.X.Offset + (input.Position - start).X, objectposition.Y.Scale, objectposition.Y.Offset + (input.Position - start).Y)
-            dragoutline.Position = currentpos
-            if allow_tween then
-                local pos = tween.new(object, TweenInfo.new(settings.drag_time, Enum.EasingStyle[settings.drag_easying_style], Enum.EasingDirection[settings.drag_easying_direction]), {Position = currentpos})
-                pos:Play()
-            else
-                object.Position = currentpos
-            end
+            object.Position = currentpos
         end
     end)
 
     utility.connect(services.InputService.InputEnded, function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 and dragging then 
             dragging = false
-            dragoutline.Visible = false
-            if allow_tween then
-                local pos = tween.new(object, TweenInfo.new(settings.drag_time, Enum.EasingStyle[settings.drag_easying_style], Enum.EasingDirection[settings.drag_easying_direction]), {Position = currentpos})
-                pos:Play()
-            else
-                object.Position = currentpos
-            end
+            object.Position = currentpos
         end
     end)
 end
-function utility.resize(object, background, dragoutline)
+function utility.resize(object, background)
     pcall(function()
         local start, objectposition, dragging, currentpos
         object.MouseButton1Down:Connect(function(input)
             dragging = true
             start = input
-            dragoutline.Visible = true
             objectsize = background.Size
         end)
         utility.connect(services.InputService.InputChanged, function(input)
@@ -96,13 +82,11 @@ function utility.resize(object, background, dragoutline)
                 local Y = math.clamp(MouseLocation.Y - background.AbsolutePosition.Y, 600, 9999)
                 currentsize = UDim2.new(0,X,0,Y)
                 vector2size = Vector2.new(X,Y)
-                dragoutline.Size = currentsize
             end;
         end)
         utility.connect(services.InputService.InputEnded, function(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 then
                 dragging = false
-                dragoutline.Visible = false
                 background.Size = currentsize
                 if isfile(settings.folder_name.."/window_size.cfg") then
                     writefile(settings.folder_name.."/window_size.cfg", "sizeX=" .. tostring(vector2size.X) .. "\n" .. "sizeY=" .. tostring(vector2size.Y))
@@ -1590,10 +1574,8 @@ function library:init_window(cfg)
     local bottom_accent_line = utility.create("Square", {Parent = window_bottom, Visible = true, Transparency = 1, Size = UDim2.new(0,0,0,2), Position = UDim2.new(0,0,0,0), Thickness = 1, Filled = true, ZIndex = 4, Theme = "Accent"})
     local window_resize = utility.create("Square", {Parent = window_main, Visible = true, Transparency = 0, Size = UDim2.new(0,10,0,10), Position = UDim2.new(1,-10,1,-10), Thickness = 1, Filled = true, ZIndex = 10})
     --
-    local dragoutline = utility.create("Square", {Size = UDim2.new(0, size_X, 0, size_Y),Position = utility.getcenter(size_X, size_Y),Filled = false,Thickness = 1,Theme = "Accent",ZIndex = 1,Visible = false})
-    --
-    --utility.resize(window_resize, window_main, dragoutline, function() end)
-    utility.dragify(window_drag, dragoutline, window_main, drag_tween)
+    --utility.resize(window_resize, window_main, function() end)
+    utility.dragify(window_drag, window_main, drag_tween)
     
     
     
@@ -1682,6 +1664,25 @@ function library:init_window(cfg)
             esp_distance.Transparency = Value and 1 or 0
             esp_weapon.Transparency = Value and 1 or 0
         end
+        settings.SetESPPreviewVisibility = function(Value)
+            esp_bounding_box.Transparency = Value and 1 or 0
+            esp_bounding_box_outline.Transparency = Value and 1 or 0
+            esp_health_bar.Transparency = Value and 1 or 0
+            esp_health_bar_outline.Transparency = Value and 1 or 0
+            esp_name.Transparency = Value and 1 or 0
+            esp_distance.Transparency = Value and 1 or 0
+            esp_weapon.Transparency = Value and 1 or 0
+            esp_head.Visible = Value
+            esp_head_outline.Visible = Value
+            esp_torso.Visible = Value
+            esp_torso_outline.Visible = Value
+            esp_legs.Visible = Value
+            esp_legs_outline.Visible = Value
+            esp_preview_window.Visible = Value
+            inline_outline.Visible = Value
+            window_title.Visible = Value
+            inner_window.Visible = Value
+        end
 
         settings.TogglePreviewVisibility(true)
         settings.SetPreviewNameProperty(false)
@@ -1690,6 +1691,7 @@ function library:init_window(cfg)
         settings.SetPreviewHealthBarVisible(false)
         settings.SetPreviewChamColor(Color3.fromRGB(208, 123, 255), Color3.fromRGB(0, 0, 0), 0.3, 0.5);
         settings.SetPreviewBoxColor(Color3.fromRGB(255, 255, 255), Color3.fromRGB(0, 0, 0));
+        settings.SetESPPreviewVisibility(true)
     end;
     
     -- create pages
