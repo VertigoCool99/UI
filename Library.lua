@@ -1,3 +1,4 @@
+print("Ui Version - 0.1")
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
