@@ -1,3 +1,4 @@
+print("0.2")
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
