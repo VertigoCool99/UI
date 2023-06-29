@@ -58,7 +58,12 @@ function utility.dragify(main, dragoutline, object, allow_tween)
         if input.UserInputType == Enum.UserInputType.MouseMovement and dragging then
             currentpos = UDim2.new(objectposition.X.Scale, objectposition.X.Offset + (input.Position - start).X, objectposition.Y.Scale, objectposition.Y.Offset + (input.Position - start).Y)
             dragoutline.Position = currentpos
-            object.Position = currentpos
+            if allow_tween then
+                local pos = tween.new(object, TweenInfo.new(settings.drag_time, Enum.EasingStyle[settings.drag_easying_style], Enum.EasingDirection[settings.drag_easying_direction]), {Position = currentpos})
+                pos:Play()
+            else
+                object.Position = currentpos
+            end
         end
     end)
 
