@@ -1,4 +1,4 @@
-print("Ui Version - 0.1")
+print(" version 0.1")
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -2260,7 +2260,7 @@ function library:init_window(cfg)
                         end
                         --
                         local title = utility.create("Text", {
-                            Text = name,
+                            Text = name.."multi container",
                             Font = Drawing.Fonts.Plex,
                             Size = 13,
                             Position = UDim2.new(0, 105, 0, 0),
@@ -3574,7 +3574,7 @@ function library:init_window(cfg)
                     end
                     --
                     local title = utility.create("Text", {
-                        Text = name,
+                        Text = name.." container",
                         Font = Drawing.Fonts.Plex,
                         Size = 13,
                         Position = UDim2.new(0, 105, 0, 0),
@@ -4888,7 +4888,7 @@ function library:init_window(cfg)
                 end
                 --
                 local title = utility.create("Text", {
-                    Text = name.."Chnaged the right",
+                    Text = name.."section drop",
                     Font = Drawing.Fonts.Plex,
                     Size = 13,
                     Position = UDim2.new(0, 105, 0, 0),
