@@ -1166,14 +1166,14 @@ function library.object_textbox(box, text, callback, finishedcallback)
         end
     end)
 end
-function library.object_dropdown(holder, content, flag, callback, default, max, scrollable, scrollingmax, section,title)
+function library.object_dropdown(holder, content, flag, callback, default, max, scrollable, scrollingmax, section)
     local dropdown = utility.create("Square", {
         Filled = true,
         Visible = true,
         Thickness = 1,
         Color = Color3.fromRGB(13,13,13),
         Size = UDim2.new(0, 100, 0, 15),
-        Position = UDim2.new(0, utility.textlength(title.Text,title.Font,ttile.Size).X+5, 0,0),
+        Position = UDim2.new(0, 150, 0,0),
         ZIndex = 7,
         Parent = holder
     })
@@ -4907,8 +4907,10 @@ function library:init_window(cfg)
                     Outline = false,
                     Parent = holder
                 });
+
+                print(title.Text,title.Font,title.Size)
                 --
-                return library.object_dropdown(holder, dropdown_content, flag, callback, default, max, scrollable, scrollingmax, {Size=title.Size,Text=name,Font=title.Font})
+                return library.object_dropdown(holder, dropdown_content, flag, callback, default, max, scrollable, scrollingmax)
             end;
             -- create keybind
             function section_table:new_keybind(cfg)
