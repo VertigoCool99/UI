@@ -1734,7 +1734,8 @@ function library:init_window(cfg)
             end;
             --
             for i,v in next, self.pages do
-                print(i,v)
+                print("\n")
+                table.foreach(v,print)
                 if v ~= page then
                     v.Visible = false
                 end;
