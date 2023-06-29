@@ -1173,7 +1173,7 @@ function library.object_dropdown(holder, content, flag, callback, default, max, 
         Thickness = 1,
         Color = Color3.fromRGB(13,13,13),
         Size = UDim2.new(0, 100, 0, 15),
-        Position = UDim2.new(0, 0, 0,0),
+        Position = UDim2.new(0, 105, 0,0),
         ZIndex = 7,
         Parent = holder
     })
@@ -4882,7 +4882,7 @@ function library:init_window(cfg)
                     end
                 end
                 --
-                local holder = utility.create("Square", {Transparency = 0, ZIndex = 7,Size = UDim2.new(1, 105, 0, 15),Parent = content});
+                local holder = utility.create("Square", {Transparency = 0, ZIndex = 7,Size = UDim2.new(1, 0, 0, 15),Parent = content});
                 if allow_tool then
                    tooltip(cfg, tooltip_text, holder)
                 end
