@@ -1,11 +1,11 @@
-print("0.2")
+print("0.3")
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
     default_accent = Color3.fromRGB(255,255,255);
     drag_easying_style = "Quad";
     drag_easying_direction = "Out";
-    drag_time = 0;
+    drag_time = 0.5;
 };
 
 local drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/VertigoCool99/UI/main/drawing.lua"))();
@@ -4882,7 +4882,7 @@ function library:init_window(cfg)
                     end
                 end
                 --
-                local holder = utility.create("Square", {Transparency = 0, ZIndex = 7,Size = UDim2.new(1, 0, 0, 15),Parent = content});
+                local holder = utility.create("Square", {Transparency = 0, ZIndex = 7,Size = UDim2.new(1, 105, 0, 15),Parent = content});
                 if allow_tool then
                    tooltip(cfg, tooltip_text, holder)
                 end
