@@ -1,11 +1,10 @@
-print(" version 0.1")
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
     default_accent = Color3.fromRGB(255,255,255);
     drag_easying_style = "Quad";
     drag_easying_direction = "Out";
-    drag_time = 0.5;
+    drag_time = 0;
 };
 
 local drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/VertigoCool99/UI/main/drawing.lua"))();
@@ -4888,10 +4887,10 @@ function library:init_window(cfg)
                 end
                 --
                 local title = utility.create("Text", {
-                    Text = name.."section drop",
+                    Text = name,
                     Font = Drawing.Fonts.Plex,
                     Size = 13,
-                    Position = UDim2.new(0, 105, 0, 0),
+                    Position = UDim2.new(0, 0, 0, 0),
                     Theme = "Text",
                     ZIndex = 7,
                     Outline = false,
@@ -4901,7 +4900,7 @@ function library:init_window(cfg)
                     Text = name,
                     Font = Drawing.Fonts.Plex,
                     Size = 13,
-                    Position = UDim2.new(0, 105, 0, 1),
+                    Position = UDim2.new(0, 0, 0, 1),
                     Color = Color3.new(0,0,0),
                     ZIndex = 6,
                     Outline = false,
