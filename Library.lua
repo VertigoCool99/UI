@@ -4908,7 +4908,7 @@ function library:init_window(cfg)
                     Parent = holder
                 });
                 --
-                return library.object_dropdown(holder, dropdown_content, flag, callback, default, max, scrollable, scrollingmax,title)
+                return library.object_dropdown(holder, dropdown_content, flag, callback, default, max, scrollable, scrollingmax, {Size=title.Size,Text=name,Font=title.Font})
             end;
             -- create keybind
             function section_table:new_keybind(cfg)
