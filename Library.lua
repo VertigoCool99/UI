@@ -1,4 +1,4 @@
-print("1.0E")
+print(1.1)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -1167,7 +1167,6 @@ function library.object_textbox(box, text, callback, finishedcallback)
     end)
 end
 function library.object_dropdown(titletext,holder, content, flag, callback, default, max, scrollable, scrollingmax, section)
-    print(titletext)
     local dropdown = utility.create("Square", {
         Filled = true,
         Visible = true,
@@ -1534,7 +1533,7 @@ function library:init_window(cfg)
     -- configuration
     local window_table = {pages = {}, buttons = {}, titles = {}};
     local window_size = cfg.size or cfg.Size or Vector2.new(600,400);
-    local window_name = cfg.name or cfg.Name or "velocity.vip"
+    local window_name = cfg.name or cfg.Name or "Float.Balls"
    
     -- window configuration
     local string = readfile(settings.folder_name.."/window_size.cfg");
@@ -1735,6 +1734,7 @@ function library:init_window(cfg)
             end;
             --
             for i,v in next, self.pages do
+                print(i,v)
                 if v ~= page then
                     v.Visible = false
                 end;
