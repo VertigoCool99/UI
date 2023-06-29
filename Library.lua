@@ -1,4 +1,4 @@
-print("1.0C")
+print(1.0D)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -1166,15 +1166,15 @@ function library.object_textbox(box, text, callback, finishedcallback)
         end
     end)
 end
-function library.object_dropdown(holder, content, flag, callback, default, max, scrollable, scrollingmax, section,title)
-    print(title)
+function library.object_dropdown(holder, content, flag, callback, default, max, scrollable, scrollingmax, section,titletext)
+    print(titletext)
     local dropdown = utility.create("Square", {
         Filled = true,
         Visible = true,
         Thickness = 1,
         Color = Color3.fromRGB(13,13,13),
         Size = UDim2.new(0, 100, 0, 15),
-        Position = UDim2.new(0, utility.textlength(title.Text,Drawing.Fonts.Plex,title.Size), 0,0),
+        Position = UDim2.new(0, utility.textlength(titletext,Drawing.Fonts.Plex,13), 0,0),
         ZIndex = 7,
         Parent = holder
     })
@@ -4909,7 +4909,7 @@ function library:init_window(cfg)
                     Parent = holder
                 });
                 --
-                return library.object_dropdown(holder, dropdown_content, flag, callback, default, max, scrollable, scrollingmax,{Text=title.Text,Size=title.Size})
+                return library.object_dropdown(holder, dropdown_content, flag, callback, default, max, scrollable, scrollingmax,name)
             end;
             -- create keybind
             function section_table:new_keybind(cfg)
