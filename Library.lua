@@ -5367,9 +5367,9 @@ function library:init_window(cfg)
     function window_table:get_config()
         local configtbl = {}
 
-        for flag, _ in next, flags do
+        for flag, _ in next, library.flags do
             if not table.find(configignores, flag) then
-                local value = library.flags[flag]
+                local value = library.flags
 
                 if typeof(value) == "EnumItem" then
                     configtbl[flag] = tostring(value)
@@ -5380,7 +5380,6 @@ function library:init_window(cfg)
                 end
             end
         end
-        table.foreach(configtbl,print)
         local config = game:GetService("HttpService"):JSONEncode(configtbl)
         --
         return config
