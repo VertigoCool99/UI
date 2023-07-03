@@ -299,7 +299,7 @@ local visValues = {};
 function library:SetOpen(bool)
     if typeof(bool) == 'boolean' then
         self.open = bool;
-         if not bool then
+        if not bool then
             task.wait(.1);
         end
         self.holder.Visible = bool;
@@ -324,7 +324,6 @@ function library:SetOpen(bool)
                 Enum.UserInputType.MouseButton1
             );
         else
-            library.cursor:Remove();library.cursor = nil
             ContextActionService:UnbindAction("Scrolling");
             ContextActionService:UnbindAction("Input");
         end;
@@ -348,6 +347,9 @@ function library:SetOpen(bool)
             library.cursor.Filled = true;
             library.cursor.Visible = true;
             library.cursor.Transparency = 1;
+            if bool == fals then
+                library.cursor:Remove()
+            end
             while bool == true do
                 library.mousestate = false;
                 local mPos = game:GetService("UserInputService"):GetMouseLocation();
