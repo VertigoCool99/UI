@@ -1,4 +1,4 @@
-print(1.51)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -303,6 +303,9 @@ function library:SetOpen(bool)
             task.wait(.1);
         end
         self.holder.Visible = bool;
+        if bool == false then
+            library.cursor:Remove()
+        end
         local ContextActionService = game:GetService("ContextActionService");
         if bool then
             self.holder.Visible = bool;
@@ -332,6 +335,7 @@ function library:SetOpen(bool)
                 if bool then
                     local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
                     fadein:Play()
+                    task.wait(.1)
                     visValues[v] = v.Transparency;
                 else
                     local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
@@ -358,7 +362,6 @@ function library:SetOpen(bool)
                 end
             end;
             library.mousestate = State;
-            library.cursor:Remove()
         end)
     end
 end
