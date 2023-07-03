@@ -1,4 +1,4 @@
-print(1.2)
+print(1.1)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -1667,6 +1667,12 @@ function library:init_window(cfg)
                     v.Visible = false
                 end;
             end;
+
+            local line_tween = tween.new(bottom_accent_line, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(page_button.Position.X.Scale, page_button.Position.X.Offset, 0,0)})
+            line_tween:Play()
+            local line_size = tween.new(bottom_accent_line, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(page_button.Size.X.Scale, page_button.Size.X.Offset, 0,2)})
+            line_size:Play()
+            page.Visible = true;
             local textfade = tween.new(page_title, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Transparency = 1})
             textfade:Play()
             page.Visible = true;
