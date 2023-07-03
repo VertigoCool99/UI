@@ -1,4 +1,4 @@
-print(1.6)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -297,7 +297,7 @@ end
 local visValues = {};
 
 function library:SetOpen(bool)
-    if library.cursor ~= nil then
+    if library.cursor then
         library.cursor:Remove(); library.cursor=nil
     end
     if typeof(bool) == 'boolean' then
