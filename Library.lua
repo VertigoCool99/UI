@@ -297,9 +297,7 @@ end
 local visValues = {};
 
 function library:SetOpen(bool)
-    if library.cursor then
-        library.cursor:Remove(); library.cursor=nil
-    end
+    library.cursor:Remove()
     if typeof(bool) == 'boolean' then
         self.open = bool;
         if not bool then
