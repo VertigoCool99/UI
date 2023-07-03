@@ -1,4 +1,4 @@
-print(1.5)
+print(1.6)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -297,7 +297,7 @@ end
 local visValues = {};
 
 function library:SetOpen(bool)
-    if library.cursor then
+    if library.cursor ~= nil then
         library.cursor:Remove(); library.cursor=nil
     end
     if typeof(bool) == 'boolean' then
@@ -350,7 +350,7 @@ function library:SetOpen(bool)
             while bool == true do
                 library.mousestate = false;
                 local mPos = game:GetService("UserInputService"):GetMouseLocation();
-                if library.cursor then
+                if library.cursor ~= nil then
                     library.cursor.Color = library.theme.Accent;
                     library.cursor.PointA = Vector2.new(mPos.X, mPos.Y);
                     library.cursor.PointB = Vector2.new(mPos.X + 16, mPos.Y + 4);
