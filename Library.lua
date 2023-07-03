@@ -439,9 +439,9 @@ function library.notify(message, time, color)
 
         notification.gradient = utility.create('Image', {
             Size = UDim2.new(1,0,1,0);
-            Data = images.gradient90;
+            Data = images["gradient90"];
             Parent = notification.background;
-            Transparency = .5;
+            Transparency = 0.5;
             ZIndex = z+1;
         }, true)
 
