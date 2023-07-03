@@ -306,7 +306,7 @@ function library:SetOpen(bool)
         local ContextActionService = game:GetService("ContextActionService");
         if bool then
             self.holder.Visible = bool;
-         local ContextActionService = game:GetService("ContextActionService")
+            local ContextActionService = game:GetService("ContextActionService")
             ContextActionService:BindAction(
                 "Scrolling",
                 function ()
@@ -324,6 +324,7 @@ function library:SetOpen(bool)
                 Enum.UserInputType.MouseButton1
             );
         else
+            library.cursor:Remove()
             ContextActionService:UnbindAction("Scrolling");
             ContextActionService:UnbindAction("Input");
         end;
@@ -337,7 +338,6 @@ function library:SetOpen(bool)
                 else
                     local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
                     fadeout:Play()
-                    library.cursor:Remove()
                 end
             end)
         end
