@@ -335,7 +335,7 @@ function library:SetOpen(bool)
                 local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
                 fadein:Play()
             else
-                visValues[v]
+                visValues[v] = v.Transparency;
                 local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
                 fadeout:Play()
             end
