@@ -1,4 +1,4 @@
-print(1.51)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -1587,7 +1587,7 @@ function library:init_window(cfg)
     end;
     local window_drag = utility.create("Square", {Parent = window_main, Visible = true, Transparency = 0, Size = UDim2.new(1,0,0,30), Position = UDim2.new(0,0,0,0), Thickness = 1, Filled = true, ZIndex = 10})
     --
-    local window_title = utility.create("Text", {Text = window_name, Parent = window_top, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = true, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0.5,0,0.5,-6), ZIndex = 6});
+    local window_title = utility.create("Text", {Text = window_name, Parent = window_top, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 15, Center = true, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0.5,0,0.5,-6), ZIndex = 6});
     --
     local window_bottom = utility.create("Square", {Size = UDim2.new(1,0,0,30), Position = UDim2.new(0,0,1,-30), Color = Color3.fromRGB(25,25,25), Thickness = 1, Filled = true, ZIndex = 3, Parent = window_main}); do
         local inline_outline_bottom = utility.outline(window_bottom, Color3.fromRGB(50,50,50), 3);
