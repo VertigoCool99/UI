@@ -1,4 +1,4 @@
-print(1.51)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -5367,7 +5367,7 @@ function library:init_window(cfg)
     function window_table:get_config()
         local configtbl = {}
 
-        for flag, _ in next, library.flags do
+        for flag, _ in next, flags do
             if not table.find(configignores, flag) then
                 local value = library.flags
 
