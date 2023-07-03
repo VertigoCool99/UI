@@ -439,7 +439,7 @@ function library.notify(message, time, color)
 
         notification.gradient = utility.create('Image', {
             Size = UDim2.new(1,0,1,0);
-            Data = images.gradient90;
+            Data = .gradient90;
             Parent = notification.background;
             Transparency = .5;
             ZIndex = z+1;
@@ -1213,7 +1213,16 @@ function library.object_dropdown(titletext,holder, content, flag, callback, defa
         Parent = dropdown
     })
 
-    local icon = utility.create("Image", {Data = images.arrow_down, Transparency = 0.5, Visible = true, Parent = dropdown, Size = UDim2.new(0,9,0,6), ZIndex = 9, Position = UDim2.new(1, -13, 0, 4)});
+    local icon = utility.create("Text", {
+        Text = "+",
+        Font = Drawing.Fonts.Plex,
+        Size = 13,
+        Position = UDim2.new(1, -13, 0, 4),
+        Theme = "Text",
+        ZIndex = 9,
+        Outline = false,
+        Parent = dropdown
+    })
 
     local contentframe = utility.create("Square", {
         Filled = true,
