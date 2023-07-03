@@ -4804,7 +4804,7 @@ function library:init_window(cfg)
                     Text = name,
                     Font = Drawing.Fonts.Plex,
                     Size = 13,
-                    Position = UDim2.new(0, 105, 0, 0),
+                    Position = UDim2.new(0, 0, 0, 0),
                     Color = Color3.new(1,1,1),
                     ZIndex = 7,
                     Outline = false,
