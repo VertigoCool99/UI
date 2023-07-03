@@ -5101,7 +5101,7 @@ function library:init_window(cfg)
                     Visible = true,
                     Thickness = 0,
                     Color = Color3.fromRGB(13,13,13),
-                    Size = UDim2.new(0,100,0,15),
+                    Size = UDim2.new(0,150,0,15),
                     ZIndex = 7,
                     Parent = holder
                 })
@@ -5250,7 +5250,7 @@ function library:init_window(cfg)
                 --
                 local frame = utility.create("Square",{
                     Color = Color3.fromRGB(13,13,13),
-                    Size = UDim2.new(0, 100, 0, 15),
+                    Size = UDim2.new(0, 120, 0, 15),
                     Filled = true,
                     Parent = holder,
                     Thickness = 1,
