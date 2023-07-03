@@ -1,4 +1,4 @@
-print(1.52)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -334,8 +334,6 @@ function library:SetOpen(bool)
                 if bool then
                     local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
                     fadein:Play()
-                    task.wait(.15)
-                    visValues[v] = v.Transparency;
                 else
                     local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
                     fadeout:Play()
@@ -343,6 +341,7 @@ function library:SetOpen(bool)
                 end
             end)
         end
+        --[[
         task.spawn(function()
             local State = library.mousestate;
             library.cursor = Drawing.new('Triangle');
@@ -368,6 +367,7 @@ function library:SetOpen(bool)
                 library.cursor:Remove();library.cursor = nil
             end
         end)
+        ]]
     end
 end
 function library:ChangeThemeOption(option, color)
