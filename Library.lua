@@ -327,19 +327,20 @@ function library:SetOpen(bool)
             ContextActionService:UnbindAction("Scrolling");
             ContextActionService:UnbindAction("Input");
         end;
-
+        if bool == false then
+            library.cursor:Remove()
+        end
         for _,v in next, library.drawings do
-            if v.Transparency ~= 0 then
-                if bool then
-                    local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
-                    fadein:Play()
-                    fadein.Completed:Connet(function()
-                        visValues[v] = v.Transparency;
-                    end)
-                else
-                    local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
-                    fadeout:Play()
-                end
+            if bool then
+                local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
+                fadein:Play()
+                fadein.Completed:Connet(function()
+                    print(v.Transparency)
+                    visValues[v] = v.Transparency;
+                end)
+            else
+                local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
+                fadeout:Play()
             end
         end
         task.spawn(function()
@@ -349,9 +350,6 @@ function library:SetOpen(bool)
             library.cursor.Filled = true;
             library.cursor.Visible = true;
             library.cursor.Transparency = 1;
-            if bool == false then
-                library.cursor:Remove()
-            end
             while bool == true do
                 library.mousestate = false;
                 local mPos = game:GetService("UserInputService"):GetMouseLocation();
