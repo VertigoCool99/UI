@@ -1,4 +1,4 @@
-print(1.51)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -5380,7 +5380,7 @@ function library:init_window(cfg)
                 end
             end
         end
-        table.foreach(configtbl)
+        table.foreach(configtbl,print)
         local config = game:GetService("HttpService"):JSONEncode(configtbl)
         --
         return config
