@@ -308,7 +308,8 @@ function library:SetOpen(bool)
         end);
 
         local ContextActionService = game:GetService("ContextActionService");
-        if bool then  
+        if bool then
+            self.holder.Visible = bool;
          local ContextActionService = game:GetService("ContextActionService")
             ContextActionService:BindAction(
                 "Scrolling",
