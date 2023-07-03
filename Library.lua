@@ -334,7 +334,7 @@ function library:SetOpen(bool)
             if bool then
                 local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
                 fadein:Play()
-                fadein.Completed:Connet(function()
+                fadein.Completed(function()
                     print(v.Transparency)
                     visValues[v] = v.Transparency;
                 end)
