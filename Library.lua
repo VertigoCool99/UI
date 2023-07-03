@@ -1,4 +1,4 @@
-print(1.6)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -297,6 +297,9 @@ end
 local visValues = {};
 
 function library:SetOpen(bool)
+    if library.cursor then
+        library.cursor:Remove(); library.cursor=nil
+    end
     if typeof(bool) == 'boolean' then
         self.open = bool;
         if not bool then
@@ -327,9 +330,6 @@ function library:SetOpen(bool)
             ContextActionService:UnbindAction("Scrolling");
             ContextActionService:UnbindAction("Input");
         end;
-        if bool == false then
-            library.cursor:Remove()
-        end
         for _,v in next, library.drawings do
             if bool then
                 local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
