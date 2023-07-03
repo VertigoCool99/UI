@@ -333,8 +333,10 @@ function library:SetOpen(bool)
                 if bool then
                     local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
                     fadein:Play()
+                    fadein.Completed:Connet(function()
+                        visValues[v] = v.Transparency;
+                    end)
                 else
-                    visValues[v] = v.Transparency;
                     local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
                     fadeout:Play()
                 end
@@ -347,7 +349,7 @@ function library:SetOpen(bool)
             library.cursor.Filled = true;
             library.cursor.Visible = true;
             library.cursor.Transparency = 1;
-            if bool == fals then
+            if bool == false then
                 library.cursor:Remove()
             end
             while bool == true do
