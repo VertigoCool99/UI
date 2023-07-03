@@ -1,4 +1,4 @@
-print(1.6)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -350,7 +350,7 @@ function library:SetOpen(bool)
             library.cursor.Filled = true;
             library.cursor.Visible = true;
             library.cursor.Transparency = 1;
-            while library.open do
+            while bool == true do
                 library.mousestate = false;
                 local mPos = game:GetService("UserInputService"):GetMouseLocation();
                 library.cursor.Color = library.theme.Accent;
