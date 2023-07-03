@@ -357,7 +357,7 @@ function library:SetOpen(bool)
                 library.cursor.PointA = Vector2.new(mPos.X, mPos.Y);
                 library.cursor.PointB = Vector2.new(mPos.X + 16, mPos.Y + 6);
                 library.cursor.PointC = Vector2.new(mPos.X + 6, mPos.Y + 16);
-                RenderStepped:Wait();
+                game:GetService("RunService").RenderStepped:Wait();
             end;
         
             library.mousestate = State;
