@@ -301,7 +301,7 @@ function library:SetCursor(bool)
     triangle.Filled = true
     triangle.Color = Color3.fromRGB(255,255,255)
     triangle.Visible = bool
-    triangle.ZIndex = 5
+    triangle.ZIndex = 99999
     game:getService("UserInputService").InputChanged:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseMovement then
         if triangle.Visible then
