@@ -1,4 +1,4 @@
-print(1.5)
+print(1.51)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -1547,7 +1547,6 @@ function library:load_config(cfg_name)
 
         for i,v in next, config do
             flags[i](v)
-            print(flags[i](v))
         end
     end
 end;
@@ -5381,7 +5380,7 @@ function library:init_window(cfg)
                 end
             end
         end
-
+        table.foreach(configtbl)
         local config = game:GetService("HttpService"):JSONEncode(configtbl)
         --
         return config
