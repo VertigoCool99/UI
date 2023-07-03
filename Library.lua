@@ -1,4 +1,4 @@
-print(1.6)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -439,7 +439,7 @@ function library.notify(message, time, color)
 
         notification.gradient = utility.create('Image', {
             Size = UDim2.new(1,0,1,0);
-            Data = .gradient90;
+            Data = images.gradient90;
             Parent = notification.background;
             Transparency = .5;
             ZIndex = z+1;
