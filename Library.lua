@@ -324,9 +324,7 @@ function library:SetOpen(bool)
                 Enum.UserInputType.MouseButton1
             );
         else
-            if library.cursor ~= nil then
-                library.cursor:Remove()
-            end
+            library.cursor:Remove();library.cursor = nil
             ContextActionService:UnbindAction("Scrolling");
             ContextActionService:UnbindAction("Input");
         end;
@@ -337,9 +335,9 @@ function library:SetOpen(bool)
                     local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
                     fadein:Play()
                 else
+                    visValues[v] = v.Transparency;
                     local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
                     fadeout:Play()
-                    visValues[v] = v.Transparency;
                 end
             end
         end
@@ -360,7 +358,6 @@ function library:SetOpen(bool)
                 game:GetService("RunService").RenderStepped:Wait();
             end;
             library.mousestate = State;
-            library.cursor:Remove();
         end)
     end
 end
