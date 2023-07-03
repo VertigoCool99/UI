@@ -324,9 +324,6 @@ function library:SetOpen(bool)
                 Enum.UserInputType.MouseButton1
             );
         else
-            if library.cursor then
-                library.cursor:Remove();library.cursor = nil
-            end
             ContextActionService:UnbindAction("Scrolling");
             ContextActionService:UnbindAction("Input");
         end;
@@ -362,6 +359,11 @@ function library:SetOpen(bool)
                 end
             end;
             library.mousestate = State;
+        end)
+        task.spawn(function()
+            if bool == false and library.cursor then
+                library.cursor:Remove();library.cursor = nil
+            end
         end)
     end
 end
