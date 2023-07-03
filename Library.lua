@@ -13,6 +13,9 @@ local tween = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vertigo
 local signal = loadstring(game:HttpGet('https://raw.githubusercontent.com/VertigoCool99/UI/main/signal.lua'))()
 
 -- library
+function callback(args)
+    return pcall(function() end,args)
+end
 if not isfolder(settings.folder_name) then
     makefolder(settings.folder_name);
     makefolder(settings.folder_name.."/configs");
