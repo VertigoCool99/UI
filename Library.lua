@@ -5249,7 +5249,7 @@ function library:init_window(cfg)
                 --
                 local frame = utility.create("Square",{
                     Color = Color3.fromRGB(13,13,13),
-                    Size = UDim2.new(0, utility.textlength(button_name, 2, 13).X + 5, 0, 15),
+                    Size = UDim2.new(0, 100, 0, 15),
                     Filled = true,
                     Parent = holder,
                     Thickness = 1,
