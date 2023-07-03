@@ -5,7 +5,7 @@ local settings = {
     default_accent = Color3.fromRGB(255,255,255);
     drag_easying_style = "Quad";
     drag_easying_direction = "Out";
-    drag_time = 0;
+    drag_time = 0.5;
 };
 
 local drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/VertigoCool99/UI/main/drawing.lua"))();
@@ -2221,7 +2221,7 @@ function library:init_window(cfg)
                             Data = "+",
                             Font = Drawing.Fonts.Plex,
                             Size = 13,
-                            Position = UDim2.new(1, -13, 0, 4)
+                            Position = UDim2.new(1, -13, 0, 4),
                             Theme = "Text",
                             ZIndex = 9,
                             Outline = false,
