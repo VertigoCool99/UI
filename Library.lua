@@ -1,4 +1,4 @@
-print(1.51)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -297,8 +297,7 @@ end
 local visValues = {};
 function library:SetOpen(bool)
     if typeof(bool) == 'boolean' then
-        local triangle = utility.create("Triangle",{Filled = true,Visible=false,ZIndex=6})
-        triangle.Color = Color3.fromRGB(255,255,255)
+        local triangle = utility.create("Triangle",{Filled = true,Visible=false,ZIndex=5,Color = Color3.fromRGB(255,255,255)})
         triangle.Visible = bool
         game:getService("UserInputService").InputChanged:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseMovement then
