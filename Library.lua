@@ -327,6 +327,7 @@ function library:SetOpen(bool)
                 Enum.UserInputType.MouseButton1
             );
         else
+            library.cursor:Remove()
             ContextActionService:UnbindAction("Scrolling");
             ContextActionService:UnbindAction("Input");
         end;
@@ -347,7 +348,6 @@ function library:SetOpen(bool)
         end
         task.spawn(function()
             local State = library.mousestate;
-        
             library.cursor = Drawing.new('Triangle');
             library.cursor.Thickness = 1;
             library.cursor.Filled = true;
@@ -362,9 +362,7 @@ function library:SetOpen(bool)
                 library.cursor.PointC = Vector2.new(mPos.X + 6, mPos.Y + 14);
                 game:GetService("RunService").RenderStepped:Wait();
             end;
-        
             library.mousestate = State;
-        
             library.cursor:Remove();
         end)
     end
