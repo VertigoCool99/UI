@@ -1,4 +1,4 @@
-print(1.4)
+print(1.6)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -1640,7 +1640,6 @@ function library:init_window(cfg)
             --
             for i,v in next, self.pages do
                 print("\n")
-                table.foreach(v,print)
                 if v ~= page then
                     v.Visible = false
                 end;
@@ -1724,9 +1723,9 @@ function library:init_window(cfg)
                 local title = utility.create("Text", {Text = name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-3), ZIndex = 7});
                 local title_shadow = utility.create("Text", {Text = name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-2), ZIndex = 6});
                 --
-                local icon = utility.create("Image", {Data = open and images.arrow_up or images.arrow_down, Transparency = 0.5, Visible = true, Parent = holder, Size = UDim2.new(0,9,0,6), ZIndex = 9, Position = UDim2.new(1, -13, 0, 2)});
+                local icon = utility.create("Text", {Text = open and "+" or "-", Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-3), ZIndex = 7});
                 --
-                local multicontent = utility.create("Square", {Visible = false, Transparency = 0,Size = UDim2.new(1, -30, 0, actualsize),Position = UDim2.new(0, 15, 0, 15),Parent = holder,ZIndex = 6, Thickness = 1});
+                local multicontent = utility.create("Square", {Visible = false, Transparency = 0,Size = UDim2.new(1, -30, 0, actualsize),Position = UDim2.new(1, -13, 0, 2),Parent = holder,ZIndex = 9, Thickness = 1});
                 multicontent:AddListLayout(8)
     
                 if allow_scroll then
@@ -1737,20 +1736,20 @@ function library:init_window(cfg)
                 button.MouseButton1Click:Connect(function()
                     isopened = not isopened
                     if isopened then
-                        icon.Data = images.arrow_up
+                        icon.Text = "-"
                         multicontent.Visible = true
                         multicontent.Size = UDim2.new(1, -30, 0, actualsize)
                         holder.Size = UDim2.new(1,0,0,actualsize+ismultiplesize+8)
                         window_table:refresh_window()
                     else
-                        icon.Data = images.arrow_down
+                        icon.Text = "+"
                         multicontent.Visible = false
                         holder.Size = UDim2.new(1,0,0,8)
                         window_table:refresh_window()
                     end
                 end)
                 if isopened then
-                    icon.Data = images.arrow_up
+                    icon.Text = "-"
                     multicontent.Visible = true
                     multicontent.Size = UDim2.new(1, -30, 0, actualsize)
                     holder.Size = UDim2.new(1,0,0,actualsize+8)
@@ -1777,7 +1776,7 @@ function library:init_window(cfg)
                     local multi_title = utility.create("Text", {Text = multi_name, Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-3), ZIndex = 7});
                     local multi_title_shadow = utility.create("Text", {Text = multi_name, Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-2), ZIndex = 6});
                     --
-                    local multi_icon = utility.create("Image", {Data = multi_open and images.arrow_up or images.arrow_down, Transparency = 0.5, Visible = true, Parent = multi_holder, Size = UDim2.new(0,9,0,6), ZIndex = 9, Position = UDim2.new(1, -13, 0, 2)});
+                    local multi_icon = utility.create("Text", {Text = multi_open and "-" or "+", Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(1, -13, 0, 2), ZIndex = 9});
                     --
                     local multi_multicontent = utility.create("Square", {Visible = false, Transparency = 0,Size = UDim2.new(1, -30, 0, multi_actualsize),Position = UDim2.new(0, 15, 0, 15),Parent = multi_holder,ZIndex = 6, Thickness = 1});
                     multi_multicontent:AddListLayout(8)
@@ -1791,7 +1790,7 @@ function library:init_window(cfg)
                         multi_isopened = not multi_isopened
                         if multi_isopened then
                             ismultiplesize += multi_actualsize
-                            multi_icon.Data = images.arrow_up
+                            multi_icon.Text = "-"
                             multi_multicontent.Visible = true
                             multi_multicontent.Size = UDim2.new(1, -30, 0, multi_actualsize)
                             multi_holder.Size = UDim2.new(1,0,0,multi_actualsize+8)
@@ -1799,7 +1798,7 @@ function library:init_window(cfg)
                             window_table:refresh_window()
                         else
                             ismultiplesize -= multi_actualsize
-                            multi_icon.Data = images.arrow_down
+                            multi_icon.Text = "+"
                             multi_multicontent.Visible = false
                             multi_holder.Size = UDim2.new(1,0,0,8)
                             holder.Size = UDim2.new(1,0,0,actualsize+8)
@@ -1807,7 +1806,7 @@ function library:init_window(cfg)
                         end
                     end)
                     if isopened then
-                        multi_icon.Data = images.arrow_up
+                        multi_icon.Text = "-"
                         multi_multicontent.Visible = true
                         multi_multicontent.Size = UDim2.new(1, -30, 0, multi_actualsize)
                         multi_holder.Size = UDim2.new(1,0,0,multi_actualsize+8)
@@ -2218,8 +2217,17 @@ function library:init_window(cfg)
                             Parent = dropdown
                         })
                     
-                        local icon = utility.create("Image", {Data = images.arrow_down, Transparency = 0.5, Visible = true, Parent = dropdown, Size = UDim2.new(0,9,0,6), ZIndex = 9, Position = UDim2.new(1, -13, 0, 4)});
-                    
+                        local icon = utility.create("Text", {
+                            Data = "+"
+                            Font = Drawing.Fonts.Plex,
+                            Size = 13,
+                            Position = UDim2.new(1, -13, 0, 4)
+                            Theme = "Text",
+                            ZIndex = 9,
+                            Outline = false,
+                            Parent = dropdown
+                        })
+
                         local contentframe = utility.create("Square", {
                             Filled = true,
                             Visible = false,
@@ -2255,7 +2263,7 @@ function library:init_window(cfg)
                             dropdown.MouseButton1Click:Connect(function()
                                 opened = not opened
                                 contentframe.Visible = opened
-                                icon.Data = opened and images.arrow_up or images.arrow_down
+                                icon.Text = opened and "-" or "+"
                             end)
                         end
                     
@@ -3532,8 +3540,17 @@ function library:init_window(cfg)
                         Parent = dropdown
                     })
                 
-                    local icon = utility.create("Image", {Data = images.arrow_down, Transparency = 0.5, Visible = true, Parent = dropdown, Size = UDim2.new(0,9,0,6), ZIndex = 9, Position = UDim2.new(1, -13, 0, 4)});
-                
+                    local icon = utility.create("Text", {
+                        Text = "+",
+                        Font = Drawing.Fonts.Plex,
+                        Size = 13,
+                        Position = UDim2.new(1, -13, 0, 4),
+                        Color = Color3.new(0,0,0),
+                        ZIndex = 9,
+                        Outline = false,
+                        Parent = holder
+                    });
+
                     local contentframe = utility.create("Square", {
                         Filled = true,
                         Visible = false,
@@ -3569,7 +3586,7 @@ function library:init_window(cfg)
                         dropdown.MouseButton1Click:Connect(function()
                             opened = not opened
                             contentframe.Visible = opened
-                            icon.Data = opened and images.arrow_up or images.arrow_down
+                            icon.Text = opened and "-" or "+"
                         end)
                     end
                 
