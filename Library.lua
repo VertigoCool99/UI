@@ -297,7 +297,6 @@ end
 local visValues = {};
 
 function library:SetOpen(bool)
-    library.cursor:Remove()
     if typeof(bool) == 'boolean' then
         self.open = bool;
         if not bool then
@@ -329,14 +328,16 @@ function library:SetOpen(bool)
             ContextActionService:UnbindAction("Input");
         end;
         for _,v in next, library.drawings do
-            if bool then
-                local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
-                fadein:Play()
-            else
-                visValues[v] = v.Transparency;
-                local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
-                fadeout:Play()
-            end
+            task.spawn(function()
+                if bool then
+                    local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
+                    fadein:Play()
+                    visValues[v] = v.Transparency;
+                else
+                    local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
+                    fadeout:Play()
+                end
+            end)
         end
         task.spawn(function()
             local State = library.mousestate;
@@ -357,6 +358,7 @@ function library:SetOpen(bool)
                 end
             end;
             library.mousestate = State;
+            library.cursor:Remove()
         end)
     end
 end
