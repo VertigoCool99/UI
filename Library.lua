@@ -299,14 +299,10 @@ local visValues = {};
 function library:SetOpen(bool)
     if typeof(bool) == 'boolean' then
         self.open = bool;
-
-        task.spawn(function()
-            if not bool then
-                task.wait(.1);
-            end
-            self.holder.Visible = bool;
-        end);
-
+         if not bool then
+            task.wait(.1);
+        end
+        self.holder.Visible = bool;
         local ContextActionService = game:GetService("ContextActionService");
         if bool then
             self.holder.Visible = bool;
@@ -328,23 +324,23 @@ function library:SetOpen(bool)
                 Enum.UserInputType.MouseButton1
             );
         else
-            library.cursor:Remove()
+            if library.cursor ~= nil then
+                library.cursor:Remove()
+            end
             ContextActionService:UnbindAction("Scrolling");
             ContextActionService:UnbindAction("Input");
         end;
 
         for _,v in next, library.drawings do
             if v.Transparency ~= 0 then
-                task.spawn(function()
-                    if bool then
-                        local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
-                        fadein:Play()
-                    else
-                        local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
-                        fadeout:Play()
-                        visValues[v] = v.Transparency;
-                    end
-                end)
+                if bool then
+                    local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
+                    fadein:Play()
+                else
+                    local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
+                    fadeout:Play()
+                    visValues[v] = v.Transparency;
+                end
             end
         end
         task.spawn(function()
