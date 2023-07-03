@@ -1224,7 +1224,7 @@ function library.object_dropdown(titletext,holder, content, flag, callback, defa
         Color = Color3.fromRGB(13,13,13),
         Size = UDim2.new(1,0,0,0),
         Position = UDim2.new(0, 0, 1, 3),
-        ZIndex = 12,
+        ZIndex = 9,
         Parent = dropdown
     })
 
@@ -1235,7 +1235,8 @@ function library.object_dropdown(titletext,holder, content, flag, callback, defa
         Transparency = 0,
         Size = UDim2.new(1, -6, 1, -6),
         Position = UDim2.new(0, 3, 0, 3),
-        Parent = contentframe
+        Parent = contentframe,
+        ZIndex = 9,
     })
 
     if scrollable then
