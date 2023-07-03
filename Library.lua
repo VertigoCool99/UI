@@ -1546,7 +1546,8 @@ function library:load_config(cfg_name)
         local config = game:GetService("HttpService"):JSONDecode(file)
 
         for i,v in next, config do
-            print(flags[i])
+            flags[i](v)
+            print(flags[i](v))
         end
     end
 end;
