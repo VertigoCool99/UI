@@ -355,7 +355,7 @@ function library:SetOpen(bool)
                 local mPos = game:GetService("UserInputService"):GetMouseLocation();
                 library.cursor.Color = library.theme.Accent;
                 library.cursor.PointA = Vector2.new(mPos.X, mPos.Y);
-                library.cursor.PointB = Vector2.new(mPos.X + 16, mPos.Y + 4);
+                library.cursor.PointB = Vector2.new(mPos.X + 16, mPos.Y + 6);
                 library.cursor.PointC = Vector2.new(mPos.X + 6, mPos.Y + 8);
                 game:GetService("RunService").RenderStepped:Wait();
             end;
