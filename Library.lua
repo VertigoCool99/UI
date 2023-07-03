@@ -1,4 +1,4 @@
-print(1.51)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -297,24 +297,22 @@ end
 local triangle = utility.create("Triangle",{Filled = true,Visible=false,ZIndex=6})
 
 local visValues = {};
-function library:SetCursor(bool)
-    triangle.Color = Color3.fromRGB(255,255,255)
-    triangle.Visible = bool
-    game:getService("UserInputService").InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement then
-        if triangle.Visible then
-                local mousePos = Vector2.new(input.Position.X, input.Position.Y + 35)
-                local triangleSize = 7.5
-                triangle.Color = Color3.fromRGB(255,255,255)
-                triangle.PointA = mousePos
-                triangle.PointB = Vector2.new(mousePos.X + triangleSize, mousePos.Y + triangleSize)
-                triangle.PointC = Vector2.new(mousePos.X - triangleSize,(mousePos.Y+triangleSize)+3)
-            end
-        end
-    end)
-end
 function library:SetOpen(bool)
     if typeof(bool) == 'boolean' then
+        triangle.Color = Color3.fromRGB(255,255,255)
+        triangle.Visible = bool
+        game:getService("UserInputService").InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement then
+            if triangle.Visible then
+                    local mousePos = Vector2.new(input.Position.X, input.Position.Y + 35)
+                    local triangleSize = 7.5
+                    triangle.Color = Color3.fromRGB(255,255,255)
+                    triangle.PointA = mousePos
+                    triangle.PointB = Vector2.new(mousePos.X + triangleSize, mousePos.Y + triangleSize)
+                    triangle.PointC = Vector2.new(mousePos.X - triangleSize,(mousePos.Y+triangleSize)+3)
+                end
+            end
+        end)
         self.open = bool;
         task.spawn(function()
             if not bool then
