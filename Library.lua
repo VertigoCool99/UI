@@ -332,9 +332,8 @@ function library:SetOpen(bool)
                 if bool then
                     local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
                     fadein:Play()
-                    task.wait(.15)
-                    visValues[v] = v.Transparency;
                 else
+                    visValues[v] = v.Transparency;
                     local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
                     fadeout:Play()
                 end
