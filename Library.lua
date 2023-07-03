@@ -1,11 +1,11 @@
-print(1.5)
+print(1.51)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
     default_accent = Color3.fromRGB(255,255,255);
     drag_easying_style = "Quad";
     drag_easying_direction = "Out";
-    drag_time = 0.5;
+    drag_time = 0;
 };
 
 local drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/VertigoCool99/UI/main/drawing.lua"))();
@@ -1588,7 +1588,6 @@ function library:init_window(cfg)
     local window_drag = utility.create("Square", {Parent = window_main, Visible = true, Transparency = 0, Size = UDim2.new(1,0,0,30), Position = UDim2.new(0,0,0,0), Thickness = 1, Filled = true, ZIndex = 10})
     --
     local window_title = utility.create("Text", {Text = window_name, Parent = window_top, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = true, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0.5,0,0.5,-6), ZIndex = 6});
-    local window_title_shadow = utility.create("Text", {Text = window_name, Parent = window_top, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = true, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0.5,0,0.5,-5), ZIndex = 5});
     --
     local window_bottom = utility.create("Square", {Size = UDim2.new(1,0,0,30), Position = UDim2.new(0,0,1,-30), Color = Color3.fromRGB(25,25,25), Thickness = 1, Filled = true, ZIndex = 3, Parent = window_main}); do
         local inline_outline_bottom = utility.outline(window_bottom, Color3.fromRGB(50,50,50), 3);
@@ -1614,8 +1613,6 @@ function library:init_window(cfg)
         end;
         table.insert(self.buttons, page_button)
         local page_title = utility.create("Text", {Text = page_name, Parent = page_button, Visible = true, Transparency = 0.5, Color = Color3.new(1,1,1), Size = 13, Center = true, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0.5,0,0.5,-7), ZIndex = 7});
-        local page_title_shadow = utility.create("Text", {Text = page_name, Parent = page_button, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = true, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0.5,0,0.5,-6), ZIndex = 6});
-        table.insert(self.titles, page_title)
         --
         local page = utility.create("Square", {Parent = window_main, Visible = false, Transparency = 0, Size = UDim2.new(1,-20,1,-80), Position = UDim2.new(0,10,0,40), Thickness = 1, Filled = false, ZIndex = 4}) do
             table.insert(self.pages, page);
@@ -1698,8 +1695,6 @@ function library:init_window(cfg)
             end;
             --
             local section_title = utility.create("Text", {Text = section_name, Parent = section_top, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = true, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0.5,0,0.5,-6), ZIndex = 7});
-            local section_title_shadow = utility.create("Text", {Text = section_name, Parent = section_top, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = true, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0.5,0,0.5,-5), ZIndex = 6});
-            --
             local content = utility.create("Square", {Transparency = 0,Size = UDim2.new(1, -32, 1, -45),Position = UDim2.new(0, 16, 0, 40),Parent = section,ZIndex = 6, Thickness = 1});
             content:AddListLayout(8)        -- create container
             function section_table:new_container(cfg)
@@ -1723,7 +1718,6 @@ function library:init_window(cfg)
                 local button = utility.create("Square", {Parent = holder, Visible = true, Transparency = 0, Size = UDim2.new(1,0,0,8), Thickness = 1, Filled = true, ZIndex = 7});
                 --
                 local title = utility.create("Text", {Text = name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-3), ZIndex = 7});
-                local title_shadow = utility.create("Text", {Text = name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-2), ZIndex = 6});
                 --
                 local icon = utility.create("Text", {Text = open and "+" or "-", Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-3), ZIndex = 7});
                 --
@@ -1776,7 +1770,6 @@ function library:init_window(cfg)
                     local multi_button = utility.create("Square", {Parent = multi_holder, Visible = true, Transparency = 0, Size = UDim2.new(1,0,0,8), Thickness = 1, Filled = true, ZIndex = 7});
                     --
                     local multi_title = utility.create("Text", {Text = multi_name, Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-3), ZIndex = 7});
-                    local multi_title_shadow = utility.create("Text", {Text = multi_name, Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-2), ZIndex = 6});
                     --
                     local multi_icon = utility.create("Text", {Text = multi_open and "-" or "+", Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(1, -13, 0, 0), ZIndex = 9});
                     --
@@ -1839,7 +1832,6 @@ function library:init_window(cfg)
                         local accent = utility.create("Square", {Parent = toggle_frame, Visible = true, Transparency = 0, Size = UDim2.new(1,0,1,0), Position = UDim2.new(0,0,0,0), Thickness = 1, Filled = true, ZIndex = 7, Theme = "Accent"})
                         --
                         local toggle_title = utility.create("Text", {Text = toggle_name, Parent = holder, Visible = true, Transparency = 1, Color = toggle_risky and Color3.fromRGB(255, 57, 57) or Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,13,0,-3), ZIndex = 7});
-                        local toggle_title_shadow = utility.create("Text", {Text = toggle_name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,13,0,-2), ZIndex = 6});
                         -- functions
                         local function setstate()
                             toggled = not toggled
@@ -2036,7 +2028,6 @@ function library:init_window(cfg)
                         utility.outline(outline, Color3.fromRGB(0,0,0), 6)
                         --
                         local slider_title = utility.create("Text", {Text = name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,155,0,0), ZIndex = 7});
-                        local slider_title_shadow = utility.create("Text", {Text = name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,155,0,1), ZIndex = 6});
                         --
                         local slider_value = utility.create("Text", {Text = text, Parent = slider_frame, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = true, Outline = true, Font = Drawing.Fonts.Plex, Position = UDim2.new(0.5,0,0.5,-6), ZIndex = 8});
                         --
@@ -2180,16 +2171,6 @@ function library:init_window(cfg)
                             Position = UDim2.new(0, 105, 0, 0),
                             Theme = "Text",
                             ZIndex = 7,
-                            Outline = false,
-                            Parent = holder
-                        });
-                        local title_shadow = utility.create("Text", {
-                            Text = name,
-                            Font = Drawing.Fonts.Plex,
-                            Size = 13,
-                            Position = UDim2.new(0, 105, 0, 1),
-                            Color = Color3.new(0,0,0),
-                            ZIndex = 6,
                             Outline = false,
                             Parent = holder
                         });
@@ -3162,7 +3143,6 @@ function library:init_window(cfg)
                     local accent = utility.create("Square", {Parent = toggle_frame, Visible = true, Transparency = 0, Size = UDim2.new(1,0,1,0), Position = UDim2.new(0,0,0,0), Thickness = 1, Filled = true, ZIndex = 7, Theme = "Accent"})
                     --
                     local toggle_title = utility.create("Text", {Text = toggle_name, Parent = holder, Visible = true, Transparency = 1, Color = toggle_risky and Color3.fromRGB(255, 57, 57) or Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,13,0,-3), ZIndex = 7});
-                    local toggle_title_shadow = utility.create("Text", {Text = toggle_name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,13,0,-2), ZIndex = 6});
                     -- functions
                     local function setstate()
                         toggled = not toggled
@@ -3359,7 +3339,6 @@ function library:init_window(cfg)
                     utility.outline(outline, Color3.fromRGB(0,0,0), 6)
                     --
                     local slider_title = utility.create("Text", {Text = name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,155,0,0), ZIndex = 7});
-                    local slider_title_shadow = utility.create("Text", {Text = name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,155,0,1), ZIndex = 6});
                     --
                     local slider_value = utility.create("Text", {Text = text, Parent = slider_frame, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = true, Outline = true, Font = Drawing.Fonts.Plex, Position = UDim2.new(0.5,0,0.5,-6), ZIndex = 8});
                     --
@@ -3503,16 +3482,6 @@ function library:init_window(cfg)
                         Position = UDim2.new(0, 105, 0, 0),
                         Theme = "Text",
                         ZIndex = 7,
-                        Outline = false,
-                        Parent = holder
-                    });
-                    local title_shadow = utility.create("Text", {
-                        Text = name,
-                        Font = Drawing.Fonts.Plex,
-                        Size = 13,
-                        Position = UDim2.new(0, 105, 0, 1),
-                        Color = Color3.new(0,0,0),
-                        ZIndex = 6,
                         Outline = false,
                         Parent = holder
                     });
@@ -4482,7 +4451,6 @@ function library:init_window(cfg)
                 local accent = utility.create("Square", {Parent = toggle_frame, Visible = true, Transparency = 0, Size = UDim2.new(1,0,1,0), Position = UDim2.new(0,0,0,0), Thickness = 1, Filled = true, ZIndex = 7, Theme = "Accent"})
                 --
                 local toggle_title = utility.create("Text", {Text = toggle_name, Parent = holder, Visible = true, Transparency = 1, Color = toggle_risky and Color3.fromRGB(255, 57, 57) or Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,13,0,-3), ZIndex = 7});
-                local toggle_title_shadow = utility.create("Text", {Text = toggle_name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,13,0,-2), ZIndex = 6});
                 -- functions
                 local function setstate()
                     toggled = not toggled
@@ -4679,7 +4647,6 @@ function library:init_window(cfg)
                 utility.outline(outline, Color3.fromRGB(0,0,0), 6)
                 --
                 local slider_title = utility.create("Text", {Text = name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,155,0,0), ZIndex = 7});
-                local slider_title_shadow = utility.create("Text", {Text = name, Parent = holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,155,0,1), ZIndex = 6});
                 --
                 local slider_value = utility.create("Text", {Text = text, Parent = slider_frame, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = true, Outline = true, Font = Drawing.Fonts.Plex, Position = UDim2.new(0.5,0,0.5,-6), ZIndex = 8});
                 --
@@ -4826,16 +4793,6 @@ function library:init_window(cfg)
                     Position = UDim2.new(0, 0, 0, 0),
                     Theme = "Text",
                     ZIndex = 7,
-                    Outline = false,
-                    Parent = holder
-                });
-                local title_shadow = utility.create("Text", {
-                    Text = name,
-                    Font = Drawing.Fonts.Plex,
-                    Size = 13,
-                    Position = UDim2.new(0, 0, 0, 1),
-                    Color = Color3.new(0,0,0),
-                    ZIndex = 6,
                     Outline = false,
                     Parent = holder
                 });
@@ -5436,7 +5393,6 @@ function library:init_window(cfg)
     -- function
     function window_table:rename_window(txt)
         window_title.Text = txt;
-        window_title_shadow.Text = txt;
     end;
     --
     function window_table:get_config()
