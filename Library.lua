@@ -307,7 +307,7 @@ function library:SetCursor(bool)
         if triangle.Visible then
                 local mousePos = Vector2.new(input.Position.X, input.Position.Y + 35)
                 local triangleSize = 7.5
-                triangle.Color = trianglecolor
+                triangle.Color = Color3.fromRGB(255,255,255)
                 triangle.PointA = mousePos
                 triangle.PointB = Vector2.new(mousePos.X + triangleSize, mousePos.Y + triangleSize)
                 triangle.PointC = Vector2.new(mousePos.X - triangleSize,(mousePos.Y+triangleSize)+3)
