@@ -355,8 +355,8 @@ function library:SetOpen(bool)
                 local mPos = game:GetService("UserInputService"):GetMouseLocation();
                 library.cursor.Color = library.theme.Accent;
                 library.cursor.PointA = Vector2.new(mPos.X, mPos.Y);
-                library.cursor.PointB = Vector2.new(mPos.X + 16, mPos.Y + 6);
-                library.cursor.PointC = Vector2.new(mPos.X + 6, mPos.Y + 16);
+                library.cursor.PointB = Vector2.new(mPos.X + 16, mPos.Y + 4);
+                library.cursor.PointC = Vector2.new(mPos.X + 6, mPos.Y + 8);
                 game:GetService("RunService").RenderStepped:Wait();
             end;
         
@@ -439,9 +439,9 @@ function library.notify(message, time, color)
 
         notification.gradient = utility.create('Image', {
             Size = UDim2.new(1,0,1,0);
-            Data = images["gradient90"];
+            Data = images.gradient90;
             Parent = notification.background;
-            Transparency = 0.5;
+            Transparency = .5;
             ZIndex = z+1;
         }, true)
 
@@ -1217,7 +1217,7 @@ function library.object_dropdown(titletext,holder, content, flag, callback, defa
         Text = "+",
         Font = Drawing.Fonts.Plex,
         Size = 13,
-        Position = UDim2.new(1, 0,0, 4),
+        Position = UDim2.new(1, -13, 0, 4),
         Theme = "Text",
         ZIndex = 9,
         Outline = false,
@@ -1785,7 +1785,7 @@ function library:init_window(cfg)
                     local multi_title = utility.create("Text", {Text = multi_name, Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-3), ZIndex = 7});
                     local multi_title_shadow = utility.create("Text", {Text = multi_name, Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-2), ZIndex = 6});
                     --
-                    local multi_icon = utility.create("Text", {Text = multi_open and "-" or "+", Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(1, 0, 0, 2), ZIndex = 9});
+                    local multi_icon = utility.create("Text", {Text = multi_open and "-" or "+", Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(1, -13, 0, 2), ZIndex = 9});
                     --
                     local multi_multicontent = utility.create("Square", {Visible = false, Transparency = 0,Size = UDim2.new(1, -30, 0, multi_actualsize),Position = UDim2.new(0, 15, 0, 15),Parent = multi_holder,ZIndex = 6, Thickness = 1});
                     multi_multicontent:AddListLayout(8)
@@ -2230,7 +2230,7 @@ function library:init_window(cfg)
                             Data = "+",
                             Font = Drawing.Fonts.Plex,
                             Size = 13,
-                            Position = UDim2.new(1, 0, 0, 4),
+                            Position = UDim2.new(1, -13, 0, 4),
                             Theme = "Text",
                             ZIndex = 9,
                             Outline = false,
@@ -3553,7 +3553,7 @@ function library:init_window(cfg)
                         Text = "+",
                         Font = Drawing.Fonts.Plex,
                         Size = 13,
-                        Position = UDim2.new(1, 0, 0, 4),
+                        Position = UDim2.new(1, -13, 0, 4),
                         Color = Color3.new(0,0,0),
                         ZIndex = 9,
                         Outline = false,
