@@ -1259,7 +1259,7 @@ function library.object_dropdown(titletext,holder, content, flag, callback, defa
         dropdown.MouseButton1Click:Connect(function()
             opened = not opened
             contentframe.Visible = opened
-            icon.Data = opened and images.arrow_up or images.arrow_down
+            icon.Text = opened and "-" or "+"
         end)
     end
 
