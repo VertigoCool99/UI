@@ -5370,12 +5370,12 @@ function library:init_window(cfg)
         for flag, _ in next, flags do
             if not table.find(configignores, flag) then
                 local value = library.flags
-
-                print(type(value))
                 if typeof(value) == "EnumItem" then
                     configtbl[flag] = tostring(value)
                 elseif typeof(value) == "Color3" then
                     configtbl[flag] = {color = value:ToHex(), alpha = value.A}
+                elseif typeof(value) == "table" then
+                    table.foreach(value,print)
                 else
                     configtbl[flag] = value
                 end
