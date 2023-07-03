@@ -1,4 +1,4 @@
-print(1.5)
+print(1.51)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -5371,6 +5371,7 @@ function library:init_window(cfg)
             if not table.find(configignores, flag) then
                 local value = library.flags
 
+                print(type(value))
                 if typeof(value) == "EnumItem" then
                     configtbl[flag] = tostring(value)
                 elseif typeof(value) == "Color3" then
