@@ -1,4 +1,4 @@
-print(1.5)
+print(1.51)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -294,11 +294,10 @@ function library:ConfigIgnore(flag)
     table.insert(configignores, flag)
 end
 
-local triangle = utility.create("Triangle",{Filled = true,Visible=false,ZIndex=6})
-
 local visValues = {};
 function library:SetOpen(bool)
     if typeof(bool) == 'boolean' then
+        local triangle = utility.create("Triangle",{Filled = true,Visible=false,ZIndex=6})
         triangle.Color = Color3.fromRGB(255,255,255)
         triangle.Visible = bool
         game:getService("UserInputService").InputChanged:Connect(function(input)
@@ -313,6 +312,9 @@ function library:SetOpen(bool)
                 end
             end
         end)
+        if bool == false then
+            triangle:Remove()
+        end
         self.open = bool;
         task.spawn(function()
             if not bool then
