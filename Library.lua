@@ -1545,11 +1545,8 @@ function library:load_config(cfg_name)
         local file = readfile(cfg_name)
         local config = game:GetService("HttpService"):JSONDecode(file)
 
-        for flag, v in next, config do
-            local func = flags[flag]
-            if func then
-                func(v)
-            end
+        for i,v in next, config do
+            print(i,v)
         end
     end
 end;
@@ -1559,7 +1556,7 @@ function library:init_window(cfg)
     local window_size = cfg.size or cfg.Size or Vector2.new(600,400);
     local window_name = cfg.name or cfg.Name or "Float.Balls"
    
-    -- window configuration
+    -- window configuaration
     local string = readfile(settings.folder_name.."/window_size.cfg");
     local resize_sizeX, resize_sizeY;
     
@@ -5101,7 +5098,7 @@ function library:init_window(cfg)
                     Visible = true,
                     Thickness = 0,
                     Color = Color3.fromRGB(13,13,13),
-                    Size = UDim2.new(0,150,0,15),
+                    Size = UDim2.new(0,10,0,15),
                     ZIndex = 7,
                     Parent = holder
                 })
