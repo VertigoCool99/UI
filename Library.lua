@@ -303,9 +303,6 @@ function library:SetOpen(bool)
             task.wait(.1);
         end
         self.holder.Visible = bool;
-        if bool == false then
-            library.cursor:Remove()
-        end
         local ContextActionService = game:GetService("ContextActionService");
         if bool then
             self.holder.Visible = bool;
@@ -335,11 +332,12 @@ function library:SetOpen(bool)
                 if bool then
                     local fadein = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = visValues[v]})
                     fadein:Play()
-                    task.wait(.1)
+                    task.wait(.15)
                     visValues[v] = v.Transparency;
                 else
                     local fadeout = tween.new(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Transparency = 0})
                     fadeout:Play()
+                    library.cursor:Remove()
                 end
             end)
         end
