@@ -294,14 +294,12 @@ function library:ConfigIgnore(flag)
     table.insert(configignores, flag)
 end
 
-local triangle = Drawing.new("Triangle")
+local triangle = utility.create("Triangle",{Filled = true,Visible=false,ZIndex=6})
 
 local visValues = {};
 function library:SetCursor(bool)
-    triangle.Filled = true
     triangle.Color = Color3.fromRGB(255,255,255)
     triangle.Visible = bool
-    triangle.ZIndex = 99999
     game:getService("UserInputService").InputChanged:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseMovement then
         if triangle.Visible then
