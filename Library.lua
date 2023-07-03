@@ -1217,8 +1217,7 @@ function library.object_dropdown(titletext,holder, content, flag, callback, defa
         Text = "+",
         Font = Drawing.Fonts.Plex,
         Size = 13,
-        Position = UDim2.new(1, -10
-, 0, 4),
+        Position = UDim2.new(1, 0,0, 4),
         Theme = "Text",
         ZIndex = 9,
         Outline = false,
@@ -1786,7 +1785,7 @@ function library:init_window(cfg)
                     local multi_title = utility.create("Text", {Text = multi_name, Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-3), ZIndex = 7});
                     local multi_title_shadow = utility.create("Text", {Text = multi_name, Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(0,0,0), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(0,0,0,-2), ZIndex = 6});
                     --
-                    local multi_icon = utility.create("Text", {Text = multi_open and "-" or "+", Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(1, -10, 0, 2), ZIndex = 9});
+                    local multi_icon = utility.create("Text", {Text = multi_open and "-" or "+", Parent = multi_holder, Visible = true, Transparency = 1, Color = Color3.new(1,1,1), Size = 13, Center = false, Outline = false, Font = Drawing.Fonts.Plex, Position = UDim2.new(1, 0, 0, 2), ZIndex = 9});
                     --
                     local multi_multicontent = utility.create("Square", {Visible = false, Transparency = 0,Size = UDim2.new(1, -30, 0, multi_actualsize),Position = UDim2.new(0, 15, 0, 15),Parent = multi_holder,ZIndex = 6, Thickness = 1});
                     multi_multicontent:AddListLayout(8)
@@ -2231,7 +2230,7 @@ function library:init_window(cfg)
                             Data = "+",
                             Font = Drawing.Fonts.Plex,
                             Size = 13,
-                            Position = UDim2.new(1, -10, 0, 4),
+                            Position = UDim2.new(1, 0, 0, 4),
                             Theme = "Text",
                             ZIndex = 9,
                             Outline = false,
@@ -3554,7 +3553,7 @@ function library:init_window(cfg)
                         Text = "+",
                         Font = Drawing.Fonts.Plex,
                         Size = 13,
-                        Position = UDim2.new(1, -10, 0, 4),
+                        Position = UDim2.new(1, 0, 0, 4),
                         Color = Color3.new(0,0,0),
                         ZIndex = 9,
                         Outline = false,
