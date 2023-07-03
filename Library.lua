@@ -1,4 +1,4 @@
-print(1.51)
+print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -2557,19 +2557,9 @@ function library:init_window(cfg)
                             Text = name,
                             Font = Drawing.Fonts.Plex,
                             Size = 13,
-                            Position = UDim2.new(0, 105, 0, 0),
+                            Position = UDim2.new(0, 100, 0, 15),
                             Color = Color3.new(1,1,1),
                             ZIndex = 7,
-                            Outline = false,
-                            Parent = holder
-                        });
-                        local shadowtitle = utility.create("Text", {
-                            Text = name,
-                            Font = Drawing.Fonts.Plex,
-                            Size = 13,
-                            Position = UDim2.new(0, 105, 0, 1),
-                            Color = Color3.new(0,0,0),
-                            ZIndex = 6,
                             Outline = false,
                             Parent = holder
                         });
@@ -2582,7 +2572,7 @@ function library:init_window(cfg)
                     
                         local frame = utility.create("Square",{
                             Color = Color3.fromRGB(13,13,13),
-                            Size = UDim2.new(0, 100, 0, 15),
+                            Size = UDim2.new(0, 105, 0, 0),
                             Filled = true,
                             Parent = holder,
                             Thickness = 1,
@@ -3874,16 +3864,6 @@ function library:init_window(cfg)
                         Outline = false,
                         Parent = holder
                     });
-                    local shadowtitle = utility.create("Text", {
-                        Text = name,
-                        Font = Drawing.Fonts.Plex,
-                        Size = 13,
-                        Position = UDim2.new(0, 105, 0, 1),
-                        Color = Color3.new(0,0,0),
-                        ZIndex = 6,
-                        Outline = false,
-                        Parent = holder
-                    });
                     --
                     if not offset then
                         offset = -1
@@ -4830,16 +4810,6 @@ function library:init_window(cfg)
                     Outline = false,
                     Parent = holder
                 });
-                local shadowtitle = utility.create("Text", {
-                    Text = name,
-                    Font = Drawing.Fonts.Plex,
-                    Size = 13,
-                    Position = UDim2.new(0, 105, 0, 1),
-                    Color = Color3.new(0,0,0),
-                    ZIndex = 6,
-                    Outline = false,
-                    Parent = holder
-                });
                 --
                 if not offset then
                     offset = -1
@@ -4851,6 +4821,7 @@ function library:init_window(cfg)
                     Color = Color3.fromRGB(13,13,13),
                     Size = UDim2.new(0, 100, 0, 15),
                     Filled = true,
+                    Position = UDim2.new(0, utility.textlength(name,Drawing.Fonts.Plex,13).X+15, 0,0),
                     Parent = holder,
                     Thickness = 1,
                     ZIndex = 8
