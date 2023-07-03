@@ -213,6 +213,32 @@ local decode = (syn and syn.crypt.base64.decode) or (crypt and crypt.base64decod
 library.gradient = images.gradient90 --decode("iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABuSURBVChTxY9BDoAgDASLGD2ReOYNPsR/+BAfroI7hibe9OYmky2wbUPIOdsXdc1f9WMwppQm+SDGBnUvomAQBH49qzhFEag25869ElzaIXDhD4JGbyoEVxUedN8FKwnfmwhucgKICc+pNB1mZhdCdhsa2ky0FAAAAABJRU5ErkJggg==")
 library.utility = utility
 
+task.spawn(function()
+    local State = InputService.MouseIconEnabled;
+
+    local Cursor = Drawing.new('Triangle');
+    Cursor.Thickness = 1;
+    Cursor.Filled = true;
+    Cursor.Visible = true;
+    Cursor.Transparency = 1;
+    while library.open do
+        InputService.MouseIconEnabled = false;
+        local mPos = InputService:GetMouseLocation();
+        Cursor.Color = library.theme.Accent;
+        Cursor.PointA = Vector2.new(mPos.X, mPos.Y);
+        Cursor.PointB = Vector2.new(mPos.X + 16, mPos.Y + 6);
+        Cursor.PointC = Vector2.new(mPos.X + 6, mPos.Y + 16);
+        RenderStepped:Wait();
+    else
+        Cursor.Visible = false;
+    end;
+
+    InputService.MouseIconEnabled = State;
+
+    Cursor:Remove();
+    CursorOutline:Remove();
+end)
+
 function utility.outline(obj, color, zin, ignore)
     local outline = drawing:new("Square")
     if not ignore then
