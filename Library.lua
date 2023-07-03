@@ -294,8 +294,27 @@ function library:ConfigIgnore(flag)
     table.insert(configignores, flag)
 end
 
-local visValues = {};
+local triangle = Drawing.new("Triangle")
 
+local visValues = {};
+function library:SetCursor(bool)
+    triangle.Filled = true
+    triangle.Color = Color3.fromRGB(255,255,255)
+    triangle.Visible = bool
+    triangle.ZIndex = 5
+    game:getService("UserInputService").InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement then
+        if triangle.Visible then
+                local mousePos = Vector2.new(input.Position.X, input.Position.Y + 35)
+                local triangleSize = 7.5
+                triangle.Color = trianglecolor
+                triangle.PointA = mousePos
+                triangle.PointB = Vector2.new(mousePos.X + triangleSize, mousePos.Y + triangleSize)
+                triangle.PointC = Vector2.new(mousePos.X - triangleSize,(mousePos.Y+triangleSize)+3)
+            end
+        end
+    end)
+end
 function library:SetOpen(bool)
     if typeof(bool) == 'boolean' then
         self.open = bool;
@@ -341,33 +360,6 @@ function library:SetOpen(bool)
                 end
             end)
         end
-        --[[
-        task.spawn(function()
-            local State = library.mousestate;
-            library.cursor = Drawing.new('Triangle');
-            library.cursor.Thickness = 1;
-            library.cursor.Filled = true;
-            library.cursor.Visible = true;
-            library.cursor.Transparency = 1;
-            while bool == true do
-                library.mousestate = false;
-                local mPos = game:GetService("UserInputService"):GetMouseLocation();
-                if library.cursor ~= nil then
-                    library.cursor.Color = library.theme.Accent;
-                    library.cursor.PointA = Vector2.new(mPos.X, mPos.Y);
-                    library.cursor.PointB = Vector2.new(mPos.X + 16, mPos.Y + 4);
-                    library.cursor.PointC = Vector2.new(mPos.X + 6, mPos.Y + 14);
-                    game:GetService("RunService").RenderStepped:Wait();
-                end
-            end;
-            library.mousestate = State;
-        end)
-        task.spawn(function()
-            if bool == false and library.cursor then
-                library.cursor:Remove();library.cursor = nil
-            end
-        end)
-        ]]
     end
 end
 function library:ChangeThemeOption(option, color)
