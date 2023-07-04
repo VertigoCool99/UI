@@ -1,4 +1,3 @@
-print(1.5)
 local RunService = game:GetService("RunService")
 local settings = {
     folder_name = "Float_balls";
@@ -1550,6 +1549,7 @@ function library:load_config(cfg_name)
         end
     end
 end;
+--
 function library:init_window(cfg)
     -- configuration
     local window_table = {pages = {}, buttons = {}, titles = {}};
@@ -1636,7 +1636,6 @@ function library:init_window(cfg)
             end;
             --
             for i,v in next, self.pages do
-                print("\n")
                 if v ~= page then
                     v.Visible = false
                 end;
@@ -4442,6 +4441,14 @@ function library:init_window(cfg)
                     library.flags[toggle_flag] = toggled
                     callback(toggled)
                 end;
+
+                if toggle_state == true then
+                    local accentfade = tween.new(accent, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Transparency = 1})
+                    accentfade:Play()
+                else
+                    local accentfadeout = tween.new(accent, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Transparency = 0})
+                    accentfadeout:Play()
+                end
                 --
                 holder.MouseButton1Click:Connect(setstate);
                 if allow_tool then
@@ -4957,7 +4964,7 @@ function library:init_window(cfg)
                     if c then
                         c:Disconnect();
                         if flag then
-                            library.flags[flag] = false;
+                            library.flags[flag] = false
                         end
                         callback(false);
                         if ignore_list == false then
@@ -5368,22 +5375,20 @@ function library:init_window(cfg)
         local configtbl = {}
 
         for flag, _ in next, flags do
+            print(flag,_)
             if not table.find(configignores, flag) then
-                local value = library.flags
+                local value = library.flags[flag]
                 if typeof(value) == "EnumItem" then
                     configtbl[flag] = tostring(value)
                 elseif typeof(value) == "Color3" then
                     configtbl[flag] = {color = value:ToHex(), alpha = value.A}
-                elseif typeof(value) == "table" then
-                    table.foreach(value,print)
                 else
                     configtbl[flag] = value
                 end
             end
         end
         local config = game:GetService("HttpService"):JSONEncode(configtbl)
-        --
-        return config
+        return tostring(config)
     end;
     --
     function window_table:refresh_window()
