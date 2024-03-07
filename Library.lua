@@ -1,5 +1,6 @@
 --Modified
 --Dropdown Has Refresh
+--Dropdown Text When Choosing Wont Revert Now
 --Label Has Update
 --Cleaned Code(reduced lines)
 
@@ -958,7 +959,6 @@ function Flux:Window(text, bottom,mainclr,toclose)
 				
 				Item.MouseButton1Click:Connect(function()
 				    pcall(callback, v)
-					Title.Text = text
 					Selected = v
 					DropToggled = not DropToggled
 					Dropdown:TweenSize(UDim2.new(0, 457, 0, 43), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
@@ -971,7 +971,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 					TweenService:Create(Title,TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0.3}):Play()
 					wait(.4)
 					Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
-					Title.Text = text
+					Title.Text = Selected
 				end)
 			end
             
