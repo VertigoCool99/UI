@@ -14,7 +14,7 @@ local CloseBind = Enum.KeyCode.RightControl
 
 local FluxLib = Instance.new("ScreenGui")
 FluxLib.Name = "FluxLib"
-FluxLib.Parent = game.Players.LocalPlayer.PlayerGui --Remove CoreGui
+FluxLib.Parent = gethui() or game.Players.LocalPlayer.PlayerGui --Remove CoreGui
 FluxLib.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 coroutine.wrap(
@@ -195,7 +195,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 	local uitoggled = false
 	UserInputService.InputBegan:Connect(
 		function(io, p)
-			if io.KeyCode == CloseBind then
+			if io.KeyCode == CloseBind and MainFrame then
 				if uitoggled == false then
 					MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
 					uitoggled = true
@@ -906,7 +906,6 @@ function Flux:Window(text, bottom,mainclr,toclose)
 
 			Dropdown.MouseButton1Click:Connect(function()
 				if DropToggled == false then
-					Title.Text = Selected
 					Dropdown:TweenSize(UDim2.new(0, 457, 0, FrameSize), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
 					TweenService:Create(Title,TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextColor3 = PresetColor}):Play()
 					TweenService:Create(ArrowIco,TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageColor3 = PresetColor}):Play()
@@ -918,7 +917,6 @@ function Flux:Window(text, bottom,mainclr,toclose)
 					wait(.4)
 					Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 				else
-					Title.Text = Selected
 					Dropdown:TweenSize(UDim2.new(0, 457, 0, 43), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
 					TweenService:Create(Title,TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextColor3 = Color3.fromRGB(255,255,255)}):Play()
 					TweenService:Create(ArrowIco,TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageColor3 = Color3.fromRGB(255,255,255)}):Play()
@@ -931,6 +929,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 					Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 				end
 			    DropToggled = not DropToggled
+				Title.Text = Selected
 			end)
             
 			for i,v in next, list do
